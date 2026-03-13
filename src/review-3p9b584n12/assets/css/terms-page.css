@@ -1,0 +1,134 @@
+/* Terms of Service Page Styles */
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* Terms Content Section */
+.container {
+  padding: 5rem 6rem;
+}
+.terms-text {
+  margin: 0 auto;
+  background: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  line-height: 1.7;
+}
+
+/* Use existing heading styles from base.css */
+.terms-text h2 {
+  color: var(--color-primary);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 2.5rem 0 1rem 0;
+  padding-top: 1rem;
+  border-top: 2px solid var(--color-primary);
+}
+
+.terms-text h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.terms-text h3 {
+  color: var(--color-primary);
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 2rem 0 0.75rem 0;
+}
+
+.terms-text h4 {
+  color: var(--color-ink);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem 0;
+}
+
+.terms-text ul,
+.terms-text ol {
+  margin: 1rem 0 1.5rem 2rem;
+  list-style: disc;
+}
+
+.terms-text li {
+  margin-bottom: 0.5rem;
+}
+
+.terms-text a {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* Contact Information */
+.terms-contact {
+  background: var(--color-primary);
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.terms-contact h3 {
+  color: white;
+  margin-top: 0;
+}
+
+.terms-contact a {
+  color: var(--color-accent-1);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.terms-contact a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+
+  .terms-text {
+    padding: 2rem 1.5rem;
+    margin: 0 1rem;
+  }
+
+  .terms-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .terms-text h3 {
+    font-size: 1.25rem;
+  }
+
+  .terms-text ul,
+  .terms-text ol {
+    margin-left: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .terms-text {
+    padding: 1.5rem 1rem;
+    margin: 0 0.5rem;
+  }
+
+  .terms-text h2 {
+    font-size: 1.375rem;
+  }
+
+  .terms-text h3 {
+    font-size: 1.125rem;
+  }
+
+  .terms-text ul,
+  .terms-text ol {
+    margin-left: 1rem;
+  }
+}

@@ -1,0 +1,231 @@
+.starter-page {
+  .header {
+    width: fit-content;
+
+    .header-inner {
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .btn-tertiary {
+      font-size: 1rem;
+      margin-top: 2px;
+    }
+  }
+}
+
+.starter-page {
+  .hero {
+    text-align: center;
+
+    h1 {
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    p {
+      margin: 2rem auto;
+      font-size: 1.25rem;
+      line-height: 1.1;
+    }
+
+    h1,
+    p {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .hero-cta {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+  }
+
+  .video-section {
+    .video-background-container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto 0.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .video-background-video {
+      border-radius: 20px;
+    }
+  }
+
+  .why-proptix-section {
+    text-align: center;
+    background-color: var(--color-primary);
+
+    p {
+      color: var(--color-heading-2);
+      font-size: 2rem;
+      line-height: 1.1;
+      margin: 0 auto 1rem;
+      max-width: 650px;
+    }
+  }
+
+  .what-you-get-section {
+    text-align: center;
+
+    .container {
+      max-width: 1400px;
+    }
+    h2 {
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    .what-you-get-intro {
+      max-width: 550px;
+      margin: 0 auto 1rem;
+      font-size: 1.1rem;
+    }
+    .sage-steps-container {
+      height: 3000px;
+    }
+
+    .sage-steps-wrapper {
+      position: sticky;
+      position: -webkit-sticky;
+      top: calc(50vh - (400px / 2));
+      height: 400px;
+    }
+    .sage-step {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .step-content {
+      /* max-width: 250px; */
+      text-align: left;
+      flex: 1;
+    }
+    .empty-step {
+      opacity: 0;
+    }
+
+    .step-image {
+      display: flex;
+      justify-content: center;
+    }
+
+    .step-content.right {
+      left: auto;
+      right: 0;
+      text-align: right;
+    }
+  }
+
+  .questions-section {
+    text-align: center;
+    background-color: var(--color-primary);
+
+    p {
+      color: var(--color-surface);
+      font-size: 1.74375rem;
+      line-height: 1.66;
+      margin: 1rem auto 2rem;
+      max-width: 700px;
+    }
+
+    .questions-cta {
+      display: flex;
+      gap: 4rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    a {
+      min-width: 200px;
+    }
+  }
+}
+
+/* ------------------------------
+   Desktop-first breakpoints (downscaling)
+------------------------------ */
+@media (max-width: 1440px) {
+}
+@media (max-width: 1200px) {
+  .starter-page {
+    .what-you-get-section {
+      .step-image {
+        flex: 1.5;
+      }
+    }
+  }
+}
+@media (max-width: 992px) {
+  .main-starter {
+    .what-you-get-section {
+      .sage-steps-container {
+        height: auto;
+
+        .sage-step {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
+          margin-bottom: 2rem;
+        }
+
+        .step-image {
+          order: 1;
+        }
+      }
+
+      .step-content,
+      .step-content.right {
+        text-align: center;
+        order: 0;
+        max-width: 350px;
+      }
+
+      .empty-step {
+        display: none;
+      }
+
+      .sage-steps-wrapper {
+        position: static;
+        height: auto;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .main-starter {
+    .hero {
+      p {
+        font-size: 1.1rem;
+      }
+    }
+
+    .questions-section {
+      p {
+        font-size: 1.4rem;
+      }
+
+      .questions-cta {
+        gap: 1rem;
+      }
+    }
+  }
+}
+@media (max-width: 480px) {
+  .main-starter {
+    .questions-section {
+      p {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,261 @@
+.container-fluid {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 7rem 6rem;
+}
+.hero-inner-fluid {
+  max-width: 1440px;
+  line-height: 1.1;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  p {
+    margin: 1rem 0 2rem;
+  }
+}
+
+.bottom-padding {
+  padding-bottom: 100px;
+}
+
+.data-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.content-data {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: center;
+
+  h3 {
+    font-size: 28px;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 300;
+    font-family: var(--font-sans);
+  }
+}
+
+.star-icon {
+  width: 28px;
+  height: 28px;
+  color: inherit;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  p {
+    font-size: 28px;
+    font-weight: 300;
+    font-family: var(--font-sans);
+  }
+}
+
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 400px);
+  column-gap: 40px;
+  row-gap: 60px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.individual-post {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-width: 400px;
+}
+
+.instagram-embed-wrapper {
+  overflow-y: auto;
+  min-height: 620px;
+}
+
+.instagram-embed-wrapper iframe {
+  width: 100%;
+  height: 620px;
+  min-width: 400px;
+}
+/* Responsive breakpoints */
+@media (max-width: 1480px) {
+  .post-grid {
+    grid-template-columns: repeat(3, 350px);
+    column-gap: 30px;
+    row-gap: 50px;
+  }
+
+  .individual-post {
+    min-width: 350px;
+  }
+
+  .instagram-embed-wrapper iframe {
+    min-width: 350px;
+    height: 550px;
+  }
+
+  .instagram-embed-wrapper {
+    min-height: 550px;
+  }
+}
+/* Responsive breakpoints */
+@media (max-width: 1280px) {
+  .post-grid {
+    grid-template-columns: repeat(3, 350px);
+    column-gap: 30px;
+    row-gap: 50px;
+  }
+
+  .individual-post {
+    min-width: 350px;
+  }
+
+  .instagram-embed-wrapper iframe {
+    min-width: 350px;
+    height: 550px;
+  }
+
+  .instagram-embed-wrapper {
+    min-height: 550px;
+  }
+}
+
+@media (max-width: 1028px) {
+  .container-fluid {
+    padding: 5rem 3rem;
+  }
+
+  .post-grid {
+    grid-template-columns: repeat(2, 350px);
+    column-gap: 30px;
+    row-gap: 40px;
+  }
+
+  .data-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .content-data h3 {
+    font-size: 24px;
+  }
+
+  .content-data p {
+    font-size: 24px;
+  }
+
+  .hero-content p {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-fluid {
+    padding: 4rem 2rem;
+  }
+
+  .post-grid {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 30px;
+    max-width: 400px;
+  }
+
+  .individual-post {
+    min-width: 100%;
+  }
+
+  .instagram-embed-wrapper {
+    min-height: 500px;
+  }
+
+  .instagram-embed-wrapper iframe {
+    min-width: 100%;
+    height: 500px;
+  }
+
+  .data-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .content-data h3 {
+    font-size: 20px;
+  }
+
+  .content-data p {
+    font-size: 20px;
+  }
+
+  .hero-content p {
+    font-size: 20px;
+  }
+
+  .bottom-padding {
+    padding-bottom: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-fluid {
+    padding: 3rem 1rem;
+  }
+
+  .post-grid {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .individual-post {
+    min-width: 100%;
+  }
+
+  .instagram-embed-wrapper {
+    min-height: 450px;
+    width: 100%;
+  }
+
+  .instagram-embed-wrapper iframe {
+    min-width: 100%;
+    height: 450px;
+  }
+
+  .data-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .content-data h3 {
+    font-size: 24px;
+  }
+
+  .content-data p {
+    font-size: 18px;
+  }
+
+  .hero-content p {
+    font-size: 18px;
+  }
+
+  .bottom-padding {
+    padding-bottom: 40px;
+  }
+}

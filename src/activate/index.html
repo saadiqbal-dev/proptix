@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Facebook Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const email = urlParams.get('email');
+
+      if (email) {
+        console.log('[META PIXEL] Initializing with advanced matching, email:', email);
+        fbq("init", "1317835370085667", {
+          em: email
+        });
+      } else {
+        console.log('[META PIXEL] Initializing without advanced matching (no email)');
+        fbq("init", "1317835370085667");
+      }
+
+      fbq("track", "PageView");
+    </script>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1317835370085667&ev=PageView&noscript=1"
+      />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+    <script>
+      // Same event_id used for both Pixel and Meta Conversions API to enable Meta's deduplication
+      const eventId =
+        'reg_' +
+        (window.crypto && window.crypto.randomUUID
+          ? window.crypto.randomUUID()
+          : `${Date.now()}_${Math.random().toString(16).slice(2)}`);
+
+      console.log('[META PIXEL] Firing CompleteRegistration event:', {
+        eventID: eventId
+      });
+
+      fbq("track", "CompleteRegistration", {}, {
+        eventID: eventId
+      });
+
+      setTimeout(() => {
+        if (window.fbq && window.fbq.queue) {
+          console.log('[META PIXEL] Event queued successfully');
+        }
+        if (window._fbq && window._fbq.loaded) {
+          console.log('[META PIXEL] Pixel library loaded and event sent');
+        }
+      }, 100);
+
+      if (email) {
+        const capiPayload = {
+          email: email,
+          event_id: eventId,
+          event_source_url: window.location.href
+        };
+
+        console.log('[META CAPI] Sending to backend:', capiPayload);
+
+        fetch('http://localhost:8000/api/meta/track-registration', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(capiPayload)
+        })
+          .then(response => {
+            console.log('[META CAPI] Backend response:', {
+              status: response.status,
+              statusText: response.statusText
+            });
+          })
+          .catch(error => {
+            console.error('[META CAPI] Error:', error);
+          });
+      } else {
+        console.warn('[META CAPI] No email parameter found in URL');
+      }
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Book Your Orientation Call - Proptix.ai Starter Challenge Setup
+    </title>
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" href="../assets/img/favicon.png" />
+    <link rel="apple-touch-icon" href="../assets/img/favicon.png" />
+
+    <!-- Meta Tags for SEO -->
+    <meta
+      name="description"
+      content="Book your 1:1 orientation call to unlock your Proptix.ai Starter Challenge. Get personalized setup, strategy guidance, and shortcut weeks of trial and error with our AI property investment platform."
+    />
+    <meta
+      name="keywords"
+      content="proptix orientation call, property investment setup, AI property platform orientation, real estate flipping challenge, Sage AI setup, property investment strategy, book orientation, proptix onboarding"
+    />
+    <meta name="author" content="Proptix.ai" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Book Your Orientation Call - Proptix.ai Starter Challenge Setup"
+    />
+    <meta
+      property="og:description"
+      content="Book your 1:1 orientation call to unlock your Proptix.ai Starter Challenge. Get personalized setup, strategy guidance, and shortcut weeks of trial and error."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://proptix.ai/activate/" />
+    <meta property="og:image" content="../assets/img/logo.webp" />
+    <meta property="og:site_name" content="Proptix.ai" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Book Your Orientation Call - Proptix.ai Starter Challenge Setup"
+    />
+    <meta
+      name="twitter:description"
+      content="Book your 1:1 orientation call to unlock your Proptix.ai Starter Challenge. Get personalized setup, strategy guidance, and shortcut weeks of trial and error."
+    />
+    <meta name="twitter:image" content="../assets/img/logo.webp" />
+
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#592e83" />
+    <meta name="msapplication-TileColor" content="#592e83" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Content Security Policy -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="frame-src 'self' https://api.leadconnectorhq.com https://player.vimeo.com; script-src 'self' 'unsafe-inline' https://link.msgsndr.com https://player.vimeo.com https://connect.facebook.net; connect-src 'self' http://localhost:8000 https://api.proptix.ai https://api.leadconnectorhq.com https://player.vimeo.com https://connect.facebook.net https://www.facebook.com;"
+    />
+
+    <!-- Preconnect to third-party origins for better performance -->
+    <link rel="preconnect" href="https://api.leadconnectorhq.com" />
+    <link rel="preconnect" href="https://link.msgsndr.com" />
+    <link rel="preconnect" href="https://connect.facebook.net" />
+    <link rel="dns-prefetch" href="https://connect.facebook.net" />
+
+    <!-- Preload critical resources -->
+    <link
+      rel="preload"
+      href="../assets/img/logo.webp"
+      as="image"
+      type="image/webp"
+    />
+    <link rel="preload" href="../assets/css/base.css" as="style" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/thankyou-onboarding.css" />
+
+    <!-- JavaScript -->
+    <script src="../assets/js/thankyou-onboarding.js" defer></script>
+  </head>
+  <body class="thankyou-onboarding-page">
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-consent" aria-hidden="false">
+      <div class="cookie-content">
+        <p>
+          We use cookies and similar technologies to help personalize content,
+          provide a better experience, and analyze our traffic. By clicking
+          "Accept", you consent to our use of cookies.
+        </p>
+        <div class="cookie-buttons">
+          <button id="accept-cookies" class="btn btn-primary">Accept</button>
+          <button id="decline-cookies" class="btn btn-secondary">
+            Decline
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="header-inner">
+        <a href="#" class="logo">
+          <img
+            src="../assets/img/logo.webp"
+            alt="Progentix‑AI"
+            width="40"
+            height="40"
+            loading="eager"
+            decoding="async"
+          />
+          <span>proptix.ai</span>
+        </a>
+      </div>
+    </header>
+    <main class="main-thankyou-onboarding" style="padding-top: 0.75rem;">
+      <section class="hero" aria-labelledby="hero-title" style="padding-top: 0; margin-top: 0;">
+        <div class="container hero-inner" style="padding-top: 0; margin-top: 0;">
+          <h1 id="hero-title" style="font-size: 2.25rem; margin-top: 0; margin-bottom: 1rem;">
+            You're in — your Proptix.ai access is ready.
+          </h1>
+          <p class="hero-subtitle" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.25rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+            Next step: Book your 15-minute Smart Start Activation
+          </p>
+
+          <div class="hero-content">
+            <div class="hero-content-flex">
+              <div class="hero-text-content">
+                <p>
+                  We'll switch your workspace on and tailor it to your goals so you can start spotting real deals fast.
+                </p>
+                <p>
+                  <span style="font-weight: 600;">Book your Smart Start Activation call</span>
+                </p>
+                <p>
+                  Don't skip this step. Most people who skip setup don't get the full value from the system.
+                </p>
+
+                <div class="faq-accordion">
+                  <div class="faq-item">
+                    <button class="faq-toggle" aria-expanded="false" aria-controls="faq-1">
+                      <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 3 6 L 8 11 L 13 6 Z"/>
+                      </svg>
+                      <span class="faq-question">What happens on the call?</span>
+                    </button>
+                    <div class="faq-content" id="faq-1">
+                      <ul>
+                        <li>Confirm your goals + deal strategy inside Proptix.ai</li>
+                        <li>Show you how to identify a viable deal in minutes</li>
+                        <li>Set up your workspace to match your time, budget, and experience</li>
+                        <li>Remove the common roadblocks that stall progress</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="faq-item">
+                    <button class="faq-toggle" aria-expanded="false" aria-controls="faq-2">
+                      <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 3 6 L 8 11 L 13 6 Z"/>
+                      </svg>
+                      <span class="faq-question">Where are my login details?</span>
+                    </button>
+                    <div class="faq-content" id="faq-2">
+                      <p>They're on their way to your inbox now.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <img src="../assets/img/curved-arrow.svg" alt="" class="curved-arrow" aria-hidden="true" />
+
+              <div class="hero-booking-widget">
+                <iframe
+                  src="https://api.leadconnectorhq.com/widget/booking/qBLob59V0AeNN6UjsS3E"
+                  style="
+                    width: 100%;
+                    height: 600px;
+                    border: none;
+                    overflow: hidden;
+                    min-height: 600px;
+                  "
+                  scrolling="no"
+                  id="7WzSWJ4g0QXZQ5VTDp8o_1761093150446"
+                  title="Book Your Orientation Call - Proptix.ai"
+                  loading="lazy"
+                  allow="payment; microphone; camera"
+                >
+                  <p>
+                    Your browser does not support iframes. Please
+                    <a
+                      href="https://api.leadconnectorhq.com/widget/booking/qBLob59V0AeNN6UjsS3E"
+                      target="_blank"
+                      >click here</a
+                    >
+                    to book your call.
+                  </p>
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <a href="#" class="logo">
+              <img
+                src="../assets/img/logo.webp"
+                alt="Progentix‑AI"
+                width="40"
+                height="40"
+              />
+              <span>proptix.ai</span>
+            </a>
+            <p class="footer-tagline">
+              The Property Profit System. Powered by AI.
+            </p>
+          </div>
+
+          <nav class="footer-nav" aria-label="Footer navigation">
+            <div class="footer-nav-section">
+              <h3>Legal</h3>
+              <ul>
+                <li>
+                  <a
+                    href="../termsofservice/"
+                    target="_blank"
+                    aria-label="Terms of Service"
+                    >Terms of Service</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="../privacypolicy/"
+                    target="_blank"
+                    aria-label="Privacy Policy"
+                    >Privacy Policy</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Proptix.ai. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://link.msgsndr.com/js/form_embed.js"
+      type="text/javascript"
+    ></script>
+  </body>
+</html>
