@@ -77,9 +77,19 @@
         }
       }, 100);
 
-      if (email) {
+      // Get email from URL params (re-declared for this script block scope)
+      const urlParamsForCAPI = new URLSearchParams(window.location.search);
+      const emailForCAPI = urlParamsForCAPI.get('email');
+
+      // Validate email - must contain @ and not be a template variable like {{contact.email}}
+      const isValidEmail = emailForCAPI &&
+                           emailForCAPI.includes('@') &&
+                           !emailForCAPI.includes('{{') &&
+                           !emailForCAPI.includes('}}');
+
+      if (isValidEmail) {
         const capiPayload = {
-          email: email,
+          email: emailForCAPI,
           event_id: eventId,
           event_source_url: window.location.href
         };
@@ -103,7 +113,7 @@
             console.error('[META CAPI] Error:', error);
           });
       } else {
-        console.warn('[META CAPI] No email parameter found in URL');
+        console.warn('[META CAPI] No valid email parameter found in URL');
       }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -289,7 +299,7 @@
                   scrolling="no"
                   id="7WzSWJ4g0QXZQ5VTDp8o_1761093150446"
                   title="Book Your Orientation Call - Proptix.ai"
-                  loading="lazy"
+                  loading="eager"
                   allow="payment; microphone; camera"
                 >
                   <p>
